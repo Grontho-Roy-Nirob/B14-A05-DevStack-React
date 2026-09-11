@@ -64,7 +64,7 @@
     "name": "Redis",
     "category": "Database",
     "description": "In-memory data structure store used as a high-speed database, cache, and message broker.",
-    "icon": "https://cdn.simpleicons.org/redis/DC382D",
+    "icon": "https://redis.antirez.com/commands/assets/icons/redis-cube.svg",
     "rating": 4.8,
     "difficulty": "Intermediate",
     "badge": "Cache"
@@ -94,7 +94,7 @@
     "name": "Java",
     "category": "Language",
     "description": "A secure, object-oriented programming language designed for portability and scale.",
-    "icon": "https://cdn.simpleicons.org/openjdk/ED8B00",
+    "icon": "https://brandlogos.sgp1.digitaloceanspaces.com/svg/logos/java.svg",
     "rating": 4.6,
     "difficulty": "Intermediate",
     "badge": "Robust"
