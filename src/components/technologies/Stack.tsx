@@ -1,6 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { ITechnology } from "../../types/technology";
-import { toast } from "react-toastify";
 import StackItem from "./StackItem";
 
 interface IStackProps {
@@ -13,12 +12,7 @@ const Stack = ({
   setSelectedTechnologies,
 }: IStackProps) => {
   const handleRemoveAll = () => {
-    if (selectedTechnologies.length === 0) {
-      return;
-    }
-
     setSelectedTechnologies([]);
-    toast.success("All technologies removed successfully");
   };
 
   return (
@@ -27,9 +21,11 @@ const Stack = ({
       <h2 className="text-lg font-bold text-slate-800">Your Stack</h2>
 
       <p className="mt-1 text-xs text-slate-400">
-        {selectedTechnologies.length} Technology Selected
+        {selectedTechnologies.length > 0
+          ? `${selectedTechnologies.length} Technology Selected`
+          : "No Technologies Selected Yet"}
       </p>
-
+      
       {/* Stack Items */}
       <div className="mt-5 space-y-3">
         {selectedTechnologies.length === 0 ? (

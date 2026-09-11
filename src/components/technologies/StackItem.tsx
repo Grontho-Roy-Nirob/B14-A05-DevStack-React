@@ -1,6 +1,7 @@
 import { FaTimes } from "react-icons/fa";
 import type { ITechnology } from "../../types/technology";
 import type { Dispatch, SetStateAction } from "react";
+import { Bounce, toast } from "react-toastify";
 
 interface IStackItemProps {
   technology: ITechnology;
@@ -17,8 +18,14 @@ const StackItem = ({
     const remainingTechnologies = selectedTechnologies.filter(
       (item) => item.id !== technology.id,
     );
-
     setSelectedTechnologies(remainingTechnologies);
+
+    toast.error(`${technology.name} removed from your stack`, {
+      position: "bottom-right",
+      autoClose: 3000,
+      theme: "light",
+      transition: Bounce,
+    });
   };
 
   return (

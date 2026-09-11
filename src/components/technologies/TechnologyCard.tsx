@@ -2,6 +2,7 @@ import { FaStar } from "react-icons/fa";
 import type { ITechnology } from "../../types/technology";
 import type { SetStateAction } from "react";
 import type { Dispatch } from "react";
+import { Bounce, toast } from "react-toastify";
 
 interface ITechnologyCardProps {
   technology: ITechnology;
@@ -9,19 +10,26 @@ interface ITechnologyCardProps {
   setSelectedTechnologies: Dispatch<SetStateAction<ITechnology[]>>;
 }
 
-const TechnologyCard = ({technology,selectedTechnologies,setSelectedTechnologies}: ITechnologyCardProps) => {
+const TechnologyCard = ({
+  technology,
+  selectedTechnologies,
+  setSelectedTechnologies,
+}: ITechnologyCardProps) => {
   const selectedTechnology = selectedTechnologies.find(
-  (tech) => tech.id === technology.id
-);
+    (tech) => tech.id === technology.id,
+  );
 
-const isSelected = selectedTechnology ? true : false;
+  const isSelected = selectedTechnology ? true : false;
 
   const handleAddToStack = () => {
-    if (isSelected) {
-      return;
-    }
-
     setSelectedTechnologies([...selectedTechnologies, technology]);
+
+    toast.success(`${technology.name} added to your stack`, {
+      position: "bottom-right",
+      autoClose: 3000,
+      theme: "light",
+      transition: Bounce,
+    });
   };
 
   return (
@@ -68,7 +76,7 @@ const isSelected = selectedTechnology ? true : false;
         disabled={isSelected}
         className={`mt-5 w-full rounded-lg py-3 text-sm font-semibold transition ${
           isSelected
-            ? "cursor-not-allowed bg-gray-200 text-gray-500"
+            ? "cursor-not-allowed border border-pink-100 bg-gradient-to-r from-pink-100 to-pink-100 text-pink-700"
             : "bg-slate-900 text-white hover:bg-slate-800"
         }`}
       >
