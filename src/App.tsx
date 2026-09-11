@@ -13,10 +13,11 @@ const technologiesFetch = async (): Promise<ITechnology[]> => {
   return data;
 };
 
-const TechnologiesData = ({technologiesPromise}: {
+const TechnologiesData = ({
+  technologiesPromise,
+}: {
   technologiesPromise: Promise<ITechnology[]>;
 }) => {
-
   const technologies = use(technologiesPromise);
   return <Technologies technologies={technologies} />;
 };
@@ -29,7 +30,13 @@ function App() {
       <Nav />
       <Banner />
 
-      <Suspense >
+      <Suspense
+        fallback={
+          <div className="flex min-h-[300px] items-center justify-center">
+            <h2 className="text-lg font-semibold text-slate-500">Loading...</h2>
+          </div>
+        }
+      >
         <TechnologiesData technologiesPromise={technologiesPromise} />
       </Suspense>
 
